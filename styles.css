@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color:lightgray;
+}
+
+#container {
+  border: solid 1px blue;
+  width: 750px;
+}
+header {
+  border: solid black 1px;
+}
