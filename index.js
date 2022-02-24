@@ -1,17 +1,47 @@
 const colorPicker = document.getElementById("color-picker")
+const modePicker = document.getElementById("mode-picker")
+const schemeButton = document.getElementById("scheme-button")
+const schemeSelection = document.getElementById("scheme-selection")
 
-fetch("https://www.thecolorapi.com/scheme?hex=0047AB")
-// fetch("test.json")
+let selectedMode = modePicker.value
+let selectedColor = colorPicker.value.slice(1)
+
+let url = `https://www.thecolorapi.com/scheme?hex=${selectedColor}&mode=${selectedMode}`
+
+// fetch(url)
+// .then(res=> res.json())
+// .then(data => console.log(data))
+// .catch(error => {
+//   console.log(error)
+//   console.log("Failed to fetch data.")
+// })
+
+
+colorPicker.addEventListener("change", () => {
+  selectedColor = colorPicker.value.slice(1)
+  
+
+})
+
+modePicker.addEventListener("change", () => {
+  selectedMode = modePicker.value
+
+})
+schemeButton.addEventListener("click", ()=> {
+  selectedMode = modePicker.value
+  selectedColor = colorPicker.value.slice(1)
+  console.log(selectedMode);
+  console.log(selectedColor);
+  url = `https://www.thecolorapi.com/scheme?hex=${selectedColor}&mode=${selectedMode}`
+
+fetch(url)
 .then(res=> res.json())
-.then(data => console.log(data))
+.then(data => {
+  let output =""
+  console.log(data.colors)
+})
 .catch(error => {
   console.log(error)
   console.log("Failed to fetch data.")
 })
-
-
-colorPicker.addEventListener("change", () => {
-  let colorValue = colorPicker.value
-  console.log(colorValue)
-
 })

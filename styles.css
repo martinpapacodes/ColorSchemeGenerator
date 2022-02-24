@@ -10,4 +10,6 @@ body {
 }
 header {
   border: solid black 1px;
+  display: flex;
+  padding:  10px;
 }
