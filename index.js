@@ -2,6 +2,7 @@ const colorPicker = document.getElementById("color-picker")
 const modePicker = document.getElementById("mode-picker")
 const schemeButton = document.getElementById("scheme-button")
 const schemeSelection = document.getElementById("scheme-selection")
+const hexSelection = document.getElementById("hex-selection")
 
 let selectedMode = modePicker.value
 let selectedColor = colorPicker.value.slice(1)
@@ -37,8 +38,22 @@ schemeButton.addEventListener("click", ()=> {
 fetch(url)
 .then(res=> res.json())
 .then(data => {
-  let output =""
-  console.log(data.colors)
+  const colors = data.colors
+  console.log(colors);
+  let output = ""
+  let hexOutput = ""
+  for(let color of colors){
+    output += `
+    <div style=background-color:${color.hex.value}>
+    </div>  
+    `
+    hexOutput += `
+    <p>${color.hex.value}</p>
+    `
+  }
+  console.log(hexOutput)
+  schemeSelection.innerHTML = output
+  hexSelection.innerHTML = hexOutput
 })
 .catch(error => {
   console.log(error)
